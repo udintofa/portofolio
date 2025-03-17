@@ -8,3 +8,9 @@
 #contact{
     margin-top: 80px;
 }
+
+.box {
+    border: 3px;
+    width: 90%;
+    border-style: solid;
+}
