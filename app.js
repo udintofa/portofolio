@@ -1,33 +1,29 @@
+const path = require('path');
 const express = require('express');
 const app = express();
 
-// Melayani file statis dari folder 'public'
-app.use(express.static('public'));
+const port = process.env.PORT || 3000;
 
-// Route utama
+// Pastikan Express bisa membaca folder public (CSS, images)
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Route ke halaman HTML dalam folder 'pages'
 app.get('/', (req, res) => {
-  res.sendFile('./pages/index.html', {root: __dirname});
+  res.sendFile(path.join(__dirname, 'pages', 'index.html'));
 });
 app.get('/contact', (req, res) => {
-  res.sendFile('./pages/contact.html', {root: __dirname});
+  res.sendFile(path.join(__dirname, 'pages', 'contact.html'));
 });
 app.get('/profiles', (req, res) => {
-  res.sendFile('./pages/profiles.html', {root: __dirname});
-});
-app.get('/skills', (req, res) => {
-  res.sendFile('./pages/skills.html', {root: __dirname});
-});
-app.get('/experience', (req, res) => {
-  res.sendFile('./pages/experience.html', {root: __dirname});
+  res.sendFile(path.join(__dirname, 'pages', 'profiles.html'));
 });
 
-// Middleware 404
+// Route 404 untuk halaman yang tidak ditemukan
 app.use((req, res) => {
-    res.status(404).send('<h1>404 - Page Not Found</h1>');
+  res.status(404).send('<h1>404 - Page Not Found</h1>');
 });
 
-// Menggunakan PORT dari Vercel atau default 3000 saat lokal
-const port = process.env.PORT || 3000;
+// Jalankan server
 app.listen(port, () => {
   console.log(`Server berjalan pada port ${port}`);
 });
