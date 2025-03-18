@@ -20,6 +20,9 @@ app.get('/experience', (req, res) => {
 app.get('/profiles', (req, res) => {
   res.sendFile(path.join(__dirname, 'pages', 'profiles.html'));
 });
+app.get('/skills', (req, res) => {
+  res.sendFile(path.join(__dirname, 'pages', 'skills.html'));
+});
 
 // Route 404 untuk halaman yang tidak ditemukan
 app.use((req, res) => {
