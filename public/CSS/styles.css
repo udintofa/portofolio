@@ -14,3 +14,15 @@
     width: 90%;
     border-style: solid;
 }
+
+@media (min-width: 576px) {
+    .w-sm-25 {
+      width: 25% !important;
+    }
+  }
+  
+.fixed-ratio-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
